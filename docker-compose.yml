@@ -8,5 +8,6 @@ services:
     image: flask-app:latest
     container_name: flask-container
     ports:
-      - 5001:5000 # localport:dockerport
-    command: flask run --host=0.0.0.0
+      - 80:8000 # localport:dockerport
+    # command: flask run --host=0.0.0.0
+    command: /usr/local/bin/gunicorn run:app -b 0.0.0.0:8000 --chdir /usr/local/app

@@ -1,11 +1,12 @@
 FROM python:3.10
-WORKDIR /usr/src/app
+WORKDIR /usr/local/app
 ENV FLASK_APP=app
 
 RUN <<EOF
-mkdir /usr/src/app
+mkdir /usr/local/app
 pip install flask
+pip install gunicorn
 EOF
 
-COPY app.py ./
-EXPOSE 5000
+COPY . .
+EXPOSE 8000
